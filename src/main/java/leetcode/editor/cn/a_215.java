@@ -20,8 +20,7 @@
 
 package leetcode.editor.cn;
 
-import java.util.Comparator;
-import java.util.PriorityQueue;
+import java.util.Arrays;
 
 public class a_215 {
     public static void main(String[] args) {
@@ -31,22 +30,10 @@ public class a_215 {
     //leetcode submit region begin(Prohibit modification and deletion)
     class Solution {
         public int findKthLargest(int[] nums, int k) {
-            PriorityQueue<Integer> integers = new PriorityQueue<>((o1, o2) -> o2 - o1);
 
-            for (int num : nums) {
-                integers.offer(num);
-            }
+            Arrays.sort(nums);
 
-            System.out.println(integers);
-
-            while (k >= 1) {
-                if (k == 1) {
-                    return integers.peek();
-                }
-                integers.poll();
-                k--;
-            }
-            return -1;
+            return nums[nums.length - k];
         }
     }
 //leetcode submit region end(Prohibit modification and deletion)
