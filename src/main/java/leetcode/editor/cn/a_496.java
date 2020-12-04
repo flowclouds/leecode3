@@ -34,12 +34,10 @@
 // Related Topics 栈 
 // 👍 316 👎 0
 
-
 package leetcode.editor.cn;
 
 import java.util.Arrays;
 import java.util.HashMap;
-import java.util.Map;
 import java.util.Stack;
 
 public class a_496 {
