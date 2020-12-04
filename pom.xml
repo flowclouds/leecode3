@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>net.liux</groupId>
-    <artifactId>leecode</artifactId>
+    <artifactId>leecode3</artifactId>
     <version>1.0-SNAPSHOT</version>
     <build>
         <plugins>
