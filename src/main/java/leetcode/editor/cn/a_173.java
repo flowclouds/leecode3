@@ -33,6 +33,9 @@
 
 package leetcode.editor.cn;
 
+import java.util.ArrayList;
+import java.util.Deque;
+import java.util.LinkedList;
 import java.util.Stack;
 
 public class a_173 {
@@ -76,15 +79,15 @@ public class a_173 {
      * }
      */
     class BSTIterator {
-        private final Stack<Integer> stack = new Stack<>();
+        private final Deque<Integer> stack = new LinkedList<>();
 
         private void traverse(TreeNode root) {
 
             if (root == null) return;
 
-            traverse(root.right);
-            stack.push(root.val);
             traverse(root.left);
+            stack.offer(root.val);
+            traverse(root.right);
         }
 
         public BSTIterator(TreeNode root) {
@@ -92,11 +95,11 @@ public class a_173 {
         }
 
         public int next() {
-            return stack.pop();
+            return stack.poll();
         }
 
         public boolean hasNext() {
-            return !stack.empty();
+            return !stack.isEmpty();
         }
     }
 
