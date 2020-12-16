@@ -38,9 +38,6 @@
 
 package leetcode.editor.cn;
 
-import java.util.LinkedList;
-import java.util.List;
-
 public class a_129 {
     public static void main(String[] args) {
         Solution solution = new a_129().new Solution();
