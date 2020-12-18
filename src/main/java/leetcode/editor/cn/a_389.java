@@ -49,29 +49,23 @@ package leetcode.editor.cn;
 public class a_389 {
     public static void main(String[] args) {
         Solution solution = new a_389().new Solution();
-        solution.findTheDifference("abcd", "abcde");
+        char theDifference = solution.findTheDifference("", "a");
+        System.out.println(theDifference);
     }
 
     //leetcode submit region begin(Prohibit modification and deletion)
+    //采取异或运算 相同为0不同为1 则有0^0=0, 0^1=1 则有a^a=0,a^a^c=c
     class Solution {
         public char findTheDifference(String s, String t) {
             int length = s.length();
+            int res = 0;//定义返回结果 初始值
 
-            int[] sArray = new int[26];
+            for (int i = 0; i < length; i++)
+                res = res ^ s.charAt(i) ^ t.charAt(i);
 
-            sArray[t.charAt(length) - 'a']++;
-            for (int i = 0; i < length; i++) {
-                sArray[t.charAt(i) - 'a']++;
-                sArray[s.charAt(i) - 'a']--;
-            }
+            res = res ^ t.charAt(length);
 
-            for (int i = 0; i < 26; i++) {
-                if (sArray[i] == 1) {
-                    return (char) (i + 'a');
-                }
-            }
-
-            return 'a';
+            return (char) res;
         }
     }
 //leetcode submit region end(Prohibit modification and deletion)
