@@ -49,31 +49,23 @@ public class a_64 {
             int row = grid.length;
             int column = grid[0].length;
 
-            int[][] ints = new int[row][column];
+            int[][] dp = new int[row][column];
+            dp[0][0] = grid[0][0];
+            //初始化第一列
+            for (int i = 1; i < row; i++) {
+                dp[i][0] = dp[i - 1][0] + grid[i][0];
+            }
+            //初始化第一行
+            for (int i = 1; i < column; i++) {
+                dp[0][i] = dp[0][i - 1] + grid[0][i];
+            }
 
-            for (int i = 0; i < row; i++) {
-                for (int j = 0; j < column; j++) {
-                    if (i == 0 && j == 0) {
-                        ints[0][0] = grid[0][0];
-                        continue;
-                    }
-                    int up;
-                    int left;
-
-                    if (i == 0) {
-                        up = Integer.MAX_VALUE;
-                    } else {
-                        up = ints[i - 1][j];
-                    }
-                    if (j == 0) {
-                        left = Integer.MAX_VALUE;
-                    } else {
-                        left = ints[i][j - 1];
-                    }
-                    ints[i][j] = Math.min(up, left) + grid[i][j];
+            for (int i = 1; i < row; i++) {
+                for (int j = 1; j < column; j++) {
+                    dp[i][j] = Math.min(dp[i][j - 1], dp[i - 1][j]) + grid[i][j];
                 }
             }
-            return ints[row - 1][column - 1];
+            return dp[row - 1][column - 1];
         }
     }
 //leetcode submit region end(Prohibit modification and deletion)
