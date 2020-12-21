@@ -33,7 +33,7 @@ package leetcode.editor.cn;
 public class a_746 {
     public static void main(String[] args) {
         Solution solution = new a_746().new Solution();
-        int i = solution.minCostClimbingStairs(new int[]{1, 100, 1, 1, 1, 100, 1, 1, 100, 1});
+        int i = solution.minCostClimbingStairs(new int[]{10, 15, 20});
         System.out.println(i);
     }
 
@@ -46,7 +46,7 @@ public class a_746 {
             dp[0] = cost[0];
             dp[1] = cost[1];
             for (int i = 2; i < length; i++) {
-                dp[i] = Math.min(dp[i - 1], dp[i - 2]) + cost[i];
+                dp[i] = Math.min(dp[i - 2], dp[i - 1]) + cost[i];
             }
             return Math.min(dp[length - 1], dp[length - 2]);
         }
